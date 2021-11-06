@@ -90,22 +90,41 @@ class BaseCharacter:
                 dict_items[k] += increment
             # 'name' doesnt get changed.
 
+        # This must be run to update values that were increased in last section.
         self.__dict__.update(dict_items)
 
+        # If I run this script from terminal then execute whats below.
         if __name__ == '__main__':
             print(f'{self.name} has reached level {self.level}!')
             print(f'Intellect has increased by {stat_increase} to {self.intel}')
             print(f'Stamina has increased by {stat_increase} to {self.stam}')
             print(f'Strength has increased by {stat_increase} to {self.strn}')
             print(f'Agility has increased by {stat_increase} to {self.agi}')
+        # But for testing we need to return something so this follows.
         else:
             return self
+# python3
+# from review import BaseCharacter
+# b0 = BaseCharacter('Jim')
+# b0.__dict__
+# {'name': 'Jim', 'level': 1, 'intel': 6, 'stam': 6, 'strn': 6, 'agi': 6}
 
+        # if __name__ == '__main__':
+        #     b0 = BaseCharacter('Greg')
+        #
+        #     b0.level_up()
 
+# This class will inherit all methods from BaseCharacter.
+# From here you could have a Fire(Mage) or a Mage(BaseCharacterFire)
 class Mage(BaseCharacter):
     """A class that inherits from BaseCharacter"""
-
+    # But it still needs a constructor.
     def __init__(self, name):
+        # 'super' means parent, from the parent bring in 'name' and the other attributes.
+        # Super allows us to expand (BaseCharacter, Fire, Frost, Arcane) above.
+        # Otherwise we would use `BaseCharacter().__init__(name)
+        #                        `Fire().__init__(name) <- might not be accurate.
+        # Super would be good to investigate.
         super().__init__(name)
         time.sleep(2)
 
@@ -116,6 +135,7 @@ class Mage(BaseCharacter):
         self.mana = 80 + (self.intel * 5)
 
     def display_stats(self):
+        # Nice formatting here.  /t means tab.
         print(f"{self.name}'s stats\n")
         print(f'\tTotal Health: {self.health}')
         print(f'\tTotal Mana:   {self.mana}')
