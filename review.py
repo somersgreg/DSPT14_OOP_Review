@@ -94,7 +94,7 @@ class BaseCharacter:
         self.__dict__.update(dict_items)
 
         # If I run this script from terminal then execute whats below.
-        if __name__ == '__main__':
+
             print(f'{self.name} has reached level {self.level}!')
             print(f'Intellect has increased by {stat_increase} to {self.intel}')
             print(f'Stamina has increased by {stat_increase} to {self.stam}')
