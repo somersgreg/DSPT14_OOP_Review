@@ -9,12 +9,21 @@ class Product:
     :param name: str - Name of the item.
     """
 
-    def __init__(self, name):
+    # def __init__(self, name):
+    #     self.name = name
+    #     self.price = 10
+    #     self.weight = 20
+    #     self.flammability = 0.5
+    #     self.identifier = random.randint(1000000, 9999999)
+
+    def __init__(self, name, price=10, weight=20, flammability=0.5,
+                 identifier=random.randint(1000000, 9999999)):
+
         self.name = name
-        self.price = 10
-        self.weight = 20
-        self.flammability = 0.5
-        self.identifier = random.randint(1000000, 9999999)
+        self.price = price
+        self.weight = weight
+        self.flammability = flammability
+        self.identifier = identifier
 
     def stealability(self):
         """An internal method which estimates likelihood of theft"""
